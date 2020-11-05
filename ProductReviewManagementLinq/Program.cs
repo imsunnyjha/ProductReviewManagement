@@ -41,7 +41,8 @@ namespace ProductReviewManagementLinq
             {
                 Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
             }
-
+            Management mg = new Management();
+            mg.TopRecords(listProductReview);
         }
     }
 }
