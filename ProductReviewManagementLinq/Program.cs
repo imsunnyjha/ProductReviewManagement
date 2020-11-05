@@ -37,12 +37,13 @@ namespace ProductReviewManagementLinq
                 new ProductReview(){ProductID=24,UserID=45,Rating=2,Review="Okay",isLike=true},
                 new ProductReview(){ProductID=25,UserID=47,Rating=1,Review="Poor",isLike=true},
             };
-            foreach (var list in listProductReview)
-            {
-                Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
-            }
+            //foreach (var list in listProductReview)
+            //{
+            //    Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
+            //}
             Management mg = new Management();
             mg.TopRecords(listProductReview);
+            mg.RecordWithCondition(listProductReview);
         }
     }
 }
