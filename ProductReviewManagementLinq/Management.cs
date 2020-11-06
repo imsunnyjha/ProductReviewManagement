@@ -147,6 +147,18 @@ namespace ProductReviewManagementLinq
                 Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
             }
         }
+        public void RetrieveRecordsWithUserId10(List<ProductReview> listProductReview)
+        {
+            var data = (from productReviews in listProductReview
+                       where productReviews.UserID==10
+                       orderby productReviews.Rating ascending
+                       select productReviews).SingleOrDefault();
+            Console.WriteLine("\n");
+            foreach (var list in data)
+            {
+                Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
+            }
+        }
 
     }
 }
