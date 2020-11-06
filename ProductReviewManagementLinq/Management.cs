@@ -91,7 +91,7 @@ namespace ProductReviewManagementLinq
         {
             table.Columns.Add("ProductID");
             table.Columns.Add("UserID");
-            table.Columns.Add("Ratings");
+            table.Columns.Add("Rating");
             table.Columns.Add("Review");
             table.Columns.Add("IsLike");
 
@@ -114,6 +114,21 @@ namespace ProductReviewManagementLinq
             foreach (var data in stringTable)
             {
                 Console.WriteLine("ProductID: " + data.Field<string>("ProductID") + ", UserID: " + data.Field<string>("UserID") + ", Ratings: " + data.Field<string>("Ratings") + " , Review: " + data.Field<string>("Review") + " , IsLike: " + data.Field<string>("IsLike"));
+            }
+        }
+        /// <summary>
+        /// UC9
+        /// </summary>
+        public void GetAllLikedReviews()
+        {
+            var stringTable = from product in table.AsEnumerable()
+                       where (bool)product["isLike"] == true
+                       select product;
+
+            Console.WriteLine("\n");
+            foreach (var list in stringTable)
+            {
+                Console.WriteLine("ProductID: " + list.Field<string>("ProductID") + ", UserID: " + list.Field<string>("UserID") + ", Ratings: " + list.Field<string>("Ratings") + " , Review: " + list.Field<string>("Review") + " , IsLike: " + list.Field<string>("IsLike"));
             }
         }
         /// <summary>
@@ -149,10 +164,10 @@ namespace ProductReviewManagementLinq
         }
         public void RetrieveRecordsWithUserId10(List<ProductReview> listProductReview)
         {
-            var data = (from productReviews in listProductReview
+            var data = from productReviews in listProductReview
                        where productReviews.UserID==10
                        orderby productReviews.Rating ascending
-                       select productReviews).SingleOrDefault();
+                       select productReviews;
             Console.WriteLine("\n");
             foreach (var list in data)
             {
