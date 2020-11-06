@@ -38,13 +38,23 @@ namespace ProductReviewManagementLinq
         public void RetrieveCountOfReview(List<ProductReview> listProductReview)
         {
             var data = listProductReview.GroupBy(x => x.ProductID).Select(x => new { ProductID = x.Key, Count = x.Count() });
-                        
             Console.WriteLine("\n");
             foreach (var list in data)
             {
                 Console.WriteLine(list.ProductID + " ------- " + list.Count);
             }
         }
+        public void RetrieveProductIdAndReview(List<ProductReview> listProductReview)
+        {
+            var data = from productReviews in listProductReview
+                        select new { productReviews.ProductID, productReviews.Review};
 
+            Console.WriteLine("\n");
+            Console.WriteLine("\nProductID\tReview");
+            foreach (var list in data)
+            {
+                Console.WriteLine(list.ProductID + " -------------- " + list.Review);
+            }
+        }
     }
 }

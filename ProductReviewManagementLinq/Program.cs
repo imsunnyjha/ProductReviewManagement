@@ -44,7 +44,8 @@ namespace ProductReviewManagementLinq
             Management mg = new Management();
             mg.TopRecords(listProductReview);
             mg.RecordWithCondition(listProductReview);
-            mg.RetrieveCountOfReview(listProductReview);
+            mg.RetrieveCountOfReview(listProductReview);          
+            mg.RetrieveProductIdAndReview(listProductReview);
         }
     }
 }
