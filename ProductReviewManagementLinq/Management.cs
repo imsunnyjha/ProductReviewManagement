@@ -23,6 +23,10 @@ namespace ProductReviewManagementLinq
                 Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
             }
         }
+        /// <summary>
+        /// UC3
+        /// </summary>
+        /// <param name="listProductReview"></param>
         public void RecordWithCondition(List<ProductReview> listProductReview)
         {
             var data = (from productReviews in listProductReview
@@ -35,6 +39,10 @@ namespace ProductReviewManagementLinq
                 Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
             }
         }
+        /// <summary>
+        /// UC4
+        /// </summary>
+        /// <param name="listProductReview"></param>
         public void RetrieveCountOfReview(List<ProductReview> listProductReview)
         {
             var data = listProductReview.GroupBy(x => x.ProductID).Select(x => new { ProductID = x.Key, Count = x.Count() });
@@ -44,6 +52,10 @@ namespace ProductReviewManagementLinq
                 Console.WriteLine(list.ProductID + " ------- " + list.Count);
             }
         }
+        /// <summary>
+        /// UC5
+        /// </summary>
+        /// <param name="listProductReview"></param>
         public void RetrieveProductIdAndReview(List<ProductReview> listProductReview)
         {
             var data = from productReviews in listProductReview
@@ -56,6 +68,10 @@ namespace ProductReviewManagementLinq
                 Console.WriteLine(list.ProductID + " -------------- " + list.Review);
             }
         }
+        /// <summary>
+        /// UC6
+        /// </summary>
+        /// <param name="listProductReview"></param>
         public void SkipTop5records(List<ProductReview> listProductReview)
         {
             var data = (from productReviews in listProductReview
@@ -67,6 +83,9 @@ namespace ProductReviewManagementLinq
                 Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
             }
         }
+        /// <summary>
+        /// UC8
+        /// </summary>
         public static DataTable table = new DataTable();
         public void CreateDataTable()
         {
@@ -96,7 +115,26 @@ namespace ProductReviewManagementLinq
             {
                 Console.WriteLine("ProductID: " + data.Field<string>("ProductID") + ", UserID: " + data.Field<string>("UserID") + ", Ratings: " + data.Field<string>("Ratings") + " , Review: " + data.Field<string>("Review") + " , IsLike: " + data.Field<string>("IsLike"));
             }
-
-        }  
+        }
+        /// <summary>
+        /// UC10
+        /// </summary>
+        /// <param name="listProductReview"></param>
+        public void AverageRatingOfEachProductId(List<ProductReview> listProductReview)
+        {
+            var data = from productReviews in listProductReview
+                       group productReviews by productReviews.ProductID into g
+                       select new
+                       {
+                           ProductID = g.Key,
+                           AverageRating = g.Average(x=>x.Rating)
+                       };
+            Console.WriteLine("\n");
+            Console.WriteLine("\nProductID AverageRating");
+            foreach (var list in data)
+            {
+                Console.WriteLine(list.ProductID + " ----------- "+list.AverageRating);
+            }
+        }
     }
 }

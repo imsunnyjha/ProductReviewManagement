@@ -37,17 +37,18 @@ namespace ProductReviewManagementLinq
                 new ProductReview(){ProductID=14,UserID=45,Rating=2,Review="Okay",isLike=true},
                 new ProductReview(){ProductID=5,UserID=47,Rating=1,Review="Poor",isLike=true},
             };
-            foreach (var list in listProductReview)
-            {
-                Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
-            }
+            //foreach (var list in listProductReview)
+            //{
+            //    Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
+            //}
             Management mg = new Management();
-            mg.TopRecords(listProductReview);
-            mg.RecordWithCondition(listProductReview);
-            mg.RetrieveCountOfReview(listProductReview);
-            mg.RetrieveProductIdAndReview(listProductReview);
-            mg.SkipTop5records(listProductReview);
-            mg.CreateDataTable();
+            //mg.TopRecords(listProductReview);
+            //mg.RecordWithCondition(listProductReview);
+            //mg.RetrieveCountOfReview(listProductReview);
+            //mg.RetrieveProductIdAndReview(listProductReview);
+            //mg.SkipTop5records(listProductReview);
+            //mg.CreateDataTable();
+            mg.AverageRatingOfEachProductId(listProductReview);
         }
     }
 }
