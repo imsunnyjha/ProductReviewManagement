@@ -47,6 +47,7 @@ namespace ProductReviewManagementLinq
             mg.RetrieveCountOfReview(listProductReview);
             mg.RetrieveProductIdAndReview(listProductReview);
             mg.SkipTop5records(listProductReview);
+            mg.CreateDataTable();
         }
     }
 }
