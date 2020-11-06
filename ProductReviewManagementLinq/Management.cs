@@ -67,5 +67,36 @@ namespace ProductReviewManagementLinq
                 Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
             }
         }
+        public static DataTable table = new DataTable();
+        public void CreateDataTable()
+        {
+            table.Columns.Add("ProductID");
+            table.Columns.Add("UserID");
+            table.Columns.Add("Ratings");
+            table.Columns.Add("Review");
+            table.Columns.Add("IsLike");
+
+            table.Rows.Add(1, 1, 8, "Good", true);
+            table.Rows.Add(2, 2, 7, "Good", true);
+            table.Rows.Add(3, 3, 5, "Good", true);
+            table.Rows.Add(20, 4, 10, "Good", true);
+            table.Rows.Add(23, 5, 6, "Nice", false);
+            table.Rows.Add(6, 6, 3, "Nice", false);
+            table.Rows.Add(20, 7, 2, "Bad", false);
+            table.Rows.Add(8, 8, 1, "Nice", false);
+            table.Rows.Add(20, 20, 9, "Good", true);
+            table.Rows.Add(21, 21, 3, "Nice", false);
+            table.Rows.Add(11, 11, 3, "Nice", false);
+            table.Rows.Add(14, 14, 10, "Good", true);
+            table.Rows.Add(23, 23, 4, "Good", true);
+
+            var stringTable = from product in table.AsEnumerable() select product;
+
+            foreach (var data in stringTable)
+            {
+                Console.WriteLine("ProductID: " + data.Field<string>("ProductID") + ", UserID: " + data.Field<string>("UserID") + ", Ratings: " + data.Field<string>("Ratings") + " , Review: " + data.Field<string>("Review") + " , IsLike: " + data.Field<string>("IsLike"));
+            }
+
+        }  
     }
 }
