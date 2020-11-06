@@ -136,5 +136,17 @@ namespace ProductReviewManagementLinq
                 Console.WriteLine(list.ProductID + " ----------- "+list.AverageRating);
             }
         }
+        public void RecordWithReviewGood(List<ProductReview> listProductReview)
+        {
+            var data = from productReviews in listProductReview
+                        where (productReviews.Review == "Good")
+                        select productReviews;
+            Console.WriteLine("\n");
+            foreach (var list in data)
+            {
+                Console.WriteLine("ProductID: " + list.ProductID + " UserID: " + list.UserID + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.isLike);
+            }
+        }
+
     }
 }
