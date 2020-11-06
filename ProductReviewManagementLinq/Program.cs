@@ -48,7 +48,8 @@ namespace ProductReviewManagementLinq
             //mg.RetrieveProductIdAndReview(listProductReview);
             //mg.SkipTop5records(listProductReview);
             //mg.CreateDataTable();
-            mg.AverageRatingOfEachProductId(listProductReview);
+            //mg.AverageRatingOfEachProductId(listProductReview);
+            mg.RecordWithReviewGood(listProductReview);
         }
     }
 }
